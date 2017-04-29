@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Header Navigation Bar -->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="row container-fluid">
+        <!-- Left Panel -->
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left" style="margin-left: 0px;">
+                <a href="#">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Pages
+                </a>
+            </div>
+        </div>
+        <!-- Right Panel -->
+        <div class="col-sm-8">
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Edit Page
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Center Panel-->
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs"
+         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
+        <ul class="list-group">
+            <li class="list-group-item">Blog Posts
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item">Blogs
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item">Home
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item">About us
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item">Contact us
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 pull-right" style="margin-top: 35px;">
+        <form>
+            <div class="form-group">
+                <label for="pageName">Name</label>
+                <input type="text" class="form-control" id="pageName" placeholder="Page Name" value="Blog Post">
+            </div>
+            <div class="form-group">
+                <label for="pageTitle">Name</label>
+                <input type="text" class="form-control" id="pageTitle" placeholder="Page Title">
+            </div>
+            <a href="#" class="btn btn-danger btn-block">Delete</a>
+        </form>
+    </div>
+</div>
+
+<!-- Bottom Navigation Bar-->
+<nav class="navbar navbar-default navbar-fixed-bottom" >
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
