@@ -2,57 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New Page</title>
+    <title>Youtube link</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-
-<!-- Header Navigation Bar -->
 <nav class="navbar navbar-light bg-primary navbar-fixed-top" >
     <div class="row container-fluid">
-        <div class="col-sm-12">
+        <div class="col-xs-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="page-list.html">
+                <a class="nav-text" href="widget-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="page-list.html">
-                    <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand nav-text" href="#">
-                    New Page
+                    Widget Edit
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-left: 0px;">
+                <a class="nav-text" href="widget-list.html">
+                    <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
 
-<!-- Center Panel-->
 <div class="row container-fluid">
     <div class="col-xs-12" style="margin-top: 35px;">
         <form>
             <div class="form-group">
-                <label for="pageName">Name</label>
-                <input type="text" class="form-control" id="pageName" placeholder="Page Name">
+                <label for="widgetName">Name</label>
+                <input type="text" class="form-control" id="widgetName">
             </div>
             <div class="form-group">
-                <label for="pageTitle">Name</label>
-                <input type="text" class="form-control" id="pageTitle" placeholder="Page Title">
+                <label for="widgetText">Text</label>
+                <input type="text" class="form-control" id="widgetText">
             </div>
+            <div class="form-group">
+                <label for="widgetURL">URL</label>
+                <input type="url" class="form-control" id="widgetURL">
+            </div>
+            <div class="form-group">
+                <label for="widgetWidth">Width</label>
+                <input type="number" class="form-control" id="widgetWidth" placeholder="100%">
+            </div>
+            <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
         </form>
     </div>
 </div>
 
-<!-- Bottom Navigation Bar-->
-<nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
+<nav class="navbar navbar-default navbar-fixed-bottom" >
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="profile.html">
+                <a href="profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
