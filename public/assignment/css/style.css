@@ -8,3 +8,7 @@ body {
 .nav-text{
     color: white;
 }
+
+.nav-textAlign{
+    text-align: center;
+}
