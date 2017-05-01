@@ -1,2 +1,5 @@
 node_modules
 .idea
+/public/test
+/public/js
+public/css/jquery-ui.css
