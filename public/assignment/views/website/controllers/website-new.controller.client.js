@@ -8,6 +8,6 @@
 
     function NewWebsiteController()
     {
-
+        var vm = this;
     }
 })();

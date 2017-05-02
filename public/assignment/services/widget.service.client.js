@@ -21,7 +21,7 @@
         var api =
             {
                 "createWidget": createWidget,
-                "findWidgetByPageId": findWidgetByPageId,
+                "findWidgetsByPageId": findWidgetsByPageId,
                 "findWidgetById": findWidgetById,
                 "updateWidget": updateWidget,
                 "deleteWidget": deleteWidget
@@ -34,14 +34,15 @@
             widgets.push(widget);
         }
 
-        function findWidgetByPageId(pageId)
+        function findWidgetsByPageId(pageId)
         {
+            var widgetsFound = [];
             for(var i in widgets)
             {
                 if(widgets[i].pageId == pageId)
-                    return widgets[i];
+                    widgetsFound.push(widgets[i]);
             }
-            return null;
+            return widgetsFound;
         }
 
         function findWidgetById(widgetId)

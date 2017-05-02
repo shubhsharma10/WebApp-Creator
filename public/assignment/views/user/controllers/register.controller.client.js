@@ -4,10 +4,10 @@
 (function() {
     angular
         .module("WebAppMaker")
-        .controller("EditWebsiteController",EditWebsiteController)
+        .controller("RegisterController",RegisterController)
 
-    function EditWebsiteController()
+    function RegisterController()
     {
-
+        var vm = this;
     }
 })();

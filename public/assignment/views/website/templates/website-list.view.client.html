@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="../user/profile.view.client.html">
+                <a class="nav-text" href="../../user/templates/profile.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -25,35 +25,11 @@
     <div class="col-sm-12"
          style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Address Book app
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                    {{website.name}}
                 </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Blogger
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Blogger App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Script Testing App
-                </a>
-                <a href="website-edit.view.client.html">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -65,7 +41,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="../user/profile.view.client.html">
+                <a class="nav-text" href="../../user/templates/profile.view.client.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

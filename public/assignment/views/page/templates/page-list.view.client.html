@@ -1,20 +1,19 @@
-
-<nav class="navbar navbar-fixed-top navbar-light bg-primary" >
-    <div class="container-fluid">
+<nav class="navbar navbar-light bg-primary navbar-fixed-top" >
+    <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="../page/page-list.view.client.html">
+                <a class="nav-text" href="../../website/templates/website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="widget-chooser.view.client.html">
+                <a class="nav-text" href="page-new.view.client.html">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand nav-text" href="#">
-                    Widgets
+                    Pages
                 </a>
             </div>
         </div>
@@ -25,18 +24,11 @@
     <div class="col-sm-12"
          style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="#">
-                   Gizomodo
+            <li ng-repeat="page in model.pages" class="list-group-item">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page.pageId}}/widget">
+                    {{page.name}}
                 </a>
-                <a href="widget-heading.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <img src="https://cdn.orkin.com/images/mosquitoes/mosquito-illustration_360x286.jpg"
-                     style="width: 25%;">
-                <a href="widget-heading.view.client.html">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page.pageId}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -44,11 +36,11 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom" >
+<nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a href="../user/profile.view.client.html">
+                <a class="nav-text" href="../../user/templates/profile.view.client.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
