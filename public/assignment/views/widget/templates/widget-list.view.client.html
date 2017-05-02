@@ -1,0 +1,50 @@
+
+<nav class="navbar navbar-fixed-top navbar-light bg-primary" >
+    <div class="container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left" style="margin-left: 0px;">
+                <a class="nav-text" href="../../page/templates/page-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a class="nav-text" href="widget-chooser.view.client.html">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand nav-text" href="#">
+                    Widgets
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-12"
+         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
+        <ul class="list-group">
+            <li ng-repeat="widget in widgets" class="list-group-item">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                   Gizomodo
+                </a>
+                <a href="widget-heading.view.client.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" >
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-right" style="margin-right: 0px;">
+                <a href="../../user/templates/profile.view.client.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
