@@ -3,12 +3,12 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="profile.view.client.html">
-                    <span class="glyphicon glyphicon-ok"></span>
+                <a class="nav-text" ng-click="model.updateUser(model.user)">
+                    <span class="glyphicon glyphicon-check"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand nav-text" href="#">
+                <a class="navbar-brand nav-text" href="#/user/{{model.user._id}}">
                     Profile
                 </a>
             </div>
@@ -22,33 +22,33 @@
         <form>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" ng-model="model.user.username" class="form-control" id="username" placeholder="Username">
+                <input type="text" ng-model="model.user.username" class="form-control" id="username">
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                <input type="email" class="form-control" id="email">
             </div>
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" ng-model="model.user.firstName" class="form-control" id="first-name" placeholder="Alice">
+                <input type="text" ng-model="model.user.firstName" class="form-control" id="first-name">
             </div>
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" ng-model="model.user.lastName" class="form-control" id="last-name" placeholder="Wonderland">
+                <input type="text" ng-model="model.user.lastName" class="form-control" id="last-name">
             </div>
         </form>
 
         <a class="btn btn-primary btn-block"
-           href="../../website/templates/website-list.view.client.html">Websites</a>
+           href="#/user/{{model.user._id}}/website">Websites</a>
         <a class="btn btn-danger  btn-block"
-           href="login.view.client.html">Logout</a>
+           href="#/login">Logout</a>
     </div>
 
 <nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#">
+                <a class="nav-text" href="#/user/{{model.user._id}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

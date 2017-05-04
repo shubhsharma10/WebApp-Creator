@@ -2,12 +2,12 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="../../website/templates/website-list.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="page-new.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -25,10 +25,10 @@
          style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
         <ul class="list-group">
             <li ng-repeat="page in model.pages" class="list-group-item">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page.pageId}}/widget">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                     {{page.name}}
                 </a>
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page.pageId}}">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -40,7 +40,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="../../user/templates/profile.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

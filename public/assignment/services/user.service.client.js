@@ -30,6 +30,7 @@
         {
             user._id = (new Date()).getTime();
             users.push(user);
+            return angular.copy(user);
         }
 
         function findUserById(id)
@@ -37,7 +38,7 @@
             for(var i in users)
             {
                 if(users[i]._id == id)
-                    return users[i];
+                    return angular.copy(users[i]);
             }
             return null;
         }
@@ -56,8 +57,9 @@
         {
             for(var i in users)
             {
-                if(users[i].username == username && users[i].password == password)
-                    return users[i];
+                if(users[i].username == username && users[i].password == password) {
+                    return angular.copy(users[i]);
+                }
             }
             return null;
         }
@@ -67,7 +69,12 @@
             for(var i in users)
             {
                 if(users[i]._id == userId)
-                    users[i] = user;
+                {
+                    users[i].firstName = user.firstName;
+                    users[i].lastName = user.lastName;
+                    users[i].username = user.username;
+                    users[i].password = user.password;
+                }
             }
             return users;
         }

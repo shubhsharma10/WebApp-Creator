@@ -5,12 +5,12 @@
         <!-- Left Panel -->
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="website-list.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -23,7 +23,7 @@
         <!-- Right Panel -->
         <div class="col-sm-8">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="website-list.view.client.html">
+                <a class="nav-text" ng-click="model.createWebsite()">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -41,35 +41,11 @@
     <div class="col-sm-4 hidden-xs"
          style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Address Book app
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                    {{website.name}}
                 </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Blogger
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Blogger App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Script Testing App
-                </a>
-                <a href="website-edit.view.client.html">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -79,11 +55,11 @@
         <form>
             <div class="form-group">
                 <label for="websiteName">Name</label>
-                <input type="text" class="form-control" id="websiteName" placeholder="Name">
+                <input type="text" ng-model="model.website.name" class="form-control" id="websiteName" placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="websiteDescription">Description</label>
-                <textarea class="form-control" rows="5" id="websiteDescription" placeholder="Description"></textarea>
+                <textarea class="form-control" ng-model="model.website.description" rows="5" id="websiteDescription" placeholder="Description"></textarea>
             </div>
         </form>
     </div>
@@ -94,7 +70,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a href="../../user/templates/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

@@ -9,7 +9,7 @@
     function WebsiteListController($routeParams,WebsiteService)
     {
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams["uid"];
 
         function init() {
             vm.websites = WebsiteService.findWebsitesByUser(vm.userId);

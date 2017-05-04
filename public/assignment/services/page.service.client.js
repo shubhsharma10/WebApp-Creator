@@ -12,12 +12,14 @@
             [
                 {_id: "321", name: "Post 1",    websiteId: "456" , description: "Lorem" },
                 {_id: "432", name: "Post 2",    websiteId: "456" , description: "Lorem" },
-                {_id: "543", name: "Post 3",    websiteId: "456" , description: "Lorem" }
+                {_id: "543", name: "Post 3",    websiteId: "456" , description: "Lorem" },
+                {_id: "875", name: "Post 4",    websiteId: "567" , description: "Lorem" },
+                {_id: "983", name: "Post 5",    websiteId: "567" , description: "Lorem" }
             ];
         var api =
             {
                 "createPage": createPage,
-                "findPageByWebsiteId": findPageByWebsiteId,
+                "findPagesByWebsiteId": findPagesByWebsiteId,
                 "findPageById": findPageById,
                 "updatePage": updatePage,
                 "deletePage": deletePage
@@ -26,18 +28,20 @@
 
         function createPage(websiteId,page)
         {
+            page._id = ((new Date()).getTime()).toString();
             page.websiteId = websiteId;
             pages.push(page);
         }
 
-        function findPageByWebsiteId(websiteId)
+        function findPagesByWebsiteId(websiteId)
         {
+            var webPages = [];
             for(var i in pages)
             {
                 if(pages[i].websiteId == websiteId)
-                    return pages[i];
+                    webPages.push(pages[i]);
             }
-            return null;
+            return webPages;
         }
 
         function findPageById(pageId)
@@ -45,7 +49,7 @@
             for(var i in pages)
             {
                 if(pages[i]._id == pageId)
-                    return pages[i];
+                    return angular.copy(pages[i]);
             }
             return null;
         }
@@ -55,7 +59,10 @@
             for(var i in pages)
             {
                 if(pages[i]._id == pageId)
-                    pages[i] = page
+                {
+                    pages[i].name = page.name;
+                    pages[i].description = page.description;
+                }
             }
             return pages;
         }

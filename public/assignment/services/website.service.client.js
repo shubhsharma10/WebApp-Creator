@@ -29,6 +29,7 @@
 
         function createWebsite(userId,website)
         {
+            website._id = ((new Date()).getTime()).toString();
             website.developerId = userId;
             websites.push(website);
         }
@@ -39,7 +40,9 @@
             for(var i in websites)
             {
                 if(websites[i].developerId == userId)
+                {
                     foundWebsites.push(websites[i]);
+                }
             }
             return foundWebsites;
         }
@@ -49,17 +52,20 @@
             for(var i in websites)
             {
                 if(websites[i]._id == websiteId)
-                    return websites[i];
+                    return angular.copy(websites[i]);
             }
             return null;
         }
 
         function updateWebsite(websiteId,website)
         {
-            for(var i in websites)
-            {
-                if(websites[i]._id == websiteId)
-                    websites[i] = website;
+            for(var i in websites) {
+                if (websites[i]._id == websiteId)
+                {
+                    websites[i].name = website.name;
+                    websites[i].description = website.description;
+
+                }
             }
             return websites;
         }

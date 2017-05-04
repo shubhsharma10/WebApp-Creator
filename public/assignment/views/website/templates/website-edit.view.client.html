@@ -5,12 +5,12 @@
         <!-- Left Panel -->
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="website-list.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="website-new.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -23,7 +23,7 @@
         <!-- Right Panel -->
         <div class="col-sm-8">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="website-list.view.client.html">
+                <a class="nav-text" ng-click="model.updateWebsite()">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -41,35 +41,11 @@
     <div class="col-sm-4 hidden-xs"
          style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Address Book app
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                    {{website.name}}
                 </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Blogger
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Blogger App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../page/templates/page-list.view.client.html">
-                    Script Testing App
-                </a>
-                <a href="website-edit.view.client.html">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -85,7 +61,7 @@
                 <label for="websiteDescription">Description</label>
                 <textarea class="form-control" ng-model="model.website.description" rows="5" id="websiteDescription" placeholder="Description">Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries.It was developed by Pyra Labs,which was brought by Google in 2003.Generally the blogs are hosted by Google at a subdomain of blogspot.com. Blogs can also be hosted in the registered custom domain of the blogger(like www.example.com).[4]A user can have upto 100 blogs per account.
                 </textarea>
-                <a href="website-list.view.client.html" class="btn btn-danger btn-block">Delete</a>
+                <a ng-click="model.deleteWebsite" class="btn btn-danger btn-block">Delete</a>
             </div>
         </form>
     </div>
@@ -96,7 +72,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="../../user/templates/profile.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
