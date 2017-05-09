@@ -1,0 +1,61 @@
+<nav class="navbar navbar-fixed-top navbar-light bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="nav-text" ng-click="model.updateWidget(model.widget)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand nav-text"
+               href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+                Widget Edit
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="website-list">
+
+        <label for="widget-name">Name</label>
+        <input ng-model="model.widget.name"
+               id="widget-name"
+               class="form-control"
+               type="text"
+               placeholder="Name"/>
+
+        <label for="widget-text">Text</label>
+        <input ng-model="model.widget.text"
+               id="widget-text"
+               class="form-control"
+               type="text"
+               placeholder="Text"/>
+
+        <label>Size
+            <select ng-model="model.widget.size"
+                    ng-options="x for x in [1,2,3,4,5,6]"
+                    name="widget-size">
+            </select>
+        </label>
+
+        <a class="btn btn-danger btn-block"
+           ng-click="model.deleteWidget()">
+            Delete
+        </a>
+    </div>
+</div>
+
+<nav class="navbar navbar-light navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a class="nav-text" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

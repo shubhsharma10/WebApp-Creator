@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="../../page/templates/page-list.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="widget-chooser.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -22,26 +22,42 @@
 </nav>
 
 <div class="row container-fluid">
-    <div class="col-sm-12"
-         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
-        <ul class="list-group">
-            <li ng-repeat="widget in widgets" class="list-group-item">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                   Gizomodo
-                </a>
-                <a href="widget-heading.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+        <div ng-repeat="widget in model.widgets">
+            <div ng-switch="widget.widgetType">
+                <div class="widget-dragger pull-right">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div ng-switch-when="HEADING">
+                    <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <ng-include src="'views/widget/templates/widget-image.view.client.html'">
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <ng-include src="'views/widget/templates/widget-youtube.view.client.html'">
+                </div>
+            </div>
+        </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom" >
+<nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
     <div class="row container-fluid">
         <div class="col-sm-12">
+            <div class="navbar-text pull-left">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                    <span class="glyphicon glyphicon-play"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-left">
+                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </div>
             <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a href="../../user/templates/profile.view.client.html">
+                <a class="nav-text" href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
