@@ -27,11 +27,11 @@
             };
         return api;
 
-        var widgetTypes = ["HEADER", "IMAGE", "YOUTUBE", "HTML"];
+        var widgetTypes = ["HEADER", "IMAGE", "YOUTUBE"];
 
         
         function getWidgetTypes() {
-            return ["HEADER", "IMAGE", "YOUTUBE", "HTML"];
+            return ["HEADER", "IMAGE", "YOUTUBE"];
         }
 
         function createWidget(pageId,widget)
