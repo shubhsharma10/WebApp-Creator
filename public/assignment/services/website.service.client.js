@@ -7,7 +7,7 @@
     angular
         .module("WebAppMaker")
         .factory("WebsiteService", WebsiteService);
-    function WebsiteService() {
+    function WebsiteService($http) {
         var websites =
             [
                 {_id: "123", name: "Facebook",      developerId: "456" , description: "Lorem" },
@@ -29,14 +29,16 @@
 
         function createWebsite(userId,website)
         {
-            website._id = ((new Date()).getTime()).toString();
+            return $http.post("/api/user/:"+userId+"/website");
+            /*website._id = ((new Date()).getTime()).toString();
             website.developerId = userId;
-            websites.push(website);
+            websites.push(website);*/
         }
 
         function findWebsitesByUser(userId)
         {
-            var foundWebsites = [];
+            return $http.get("/api/user/"+userId+"/website");
+            /*var foundWebsites = [];
             for(var i in websites)
             {
                 if(websites[i].developerId == userId)
@@ -44,22 +46,25 @@
                     foundWebsites.push(websites[i]);
                 }
             }
-            return foundWebsites;
+            return foundWebsites;*/
         }
 
         function findWebsitesById(websiteId)
         {
+            return $http.get("/api/website/"+websiteId);
+            /*
             for(var i in websites)
             {
                 if(websites[i]._id == websiteId)
                     return angular.copy(websites[i]);
             }
-            return null;
+            return null;*/
         }
 
         function updateWebsite(websiteId,website)
         {
-            for(var i in websites) {
+            return $http.put("/api/website/"+websiteId,website);
+            /*for(var i in websites) {
                 if (websites[i]._id == websiteId)
                 {
                     websites[i].name = website.name;
@@ -67,17 +72,19 @@
 
                 }
             }
-            return websites;
+            return websites;*/
         }
 
         function deleteWebsite(websiteId)
         {
+            return $http.delete("/api/website/"+websiteId);
+            /*
             for(var i in websites)
             {
                 if(websites[i]._id == websiteId)
                     websites.splice(i,1);
             }
-            return websites;
+            return websites;*/
         }
     }
 })();

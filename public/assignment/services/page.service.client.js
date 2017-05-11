@@ -7,7 +7,7 @@
     angular
         .module("WebAppMaker")
         .factory("PageService", PageService);
-    function PageService() {
+    function PageService($http) {
         var pages =
             [
                 {_id: "321", name: "Post 1",    websiteId: "456" , description: "Lorem" },
@@ -28,35 +28,39 @@
 
         function createPage(websiteId,page)
         {
-            page._id = ((new Date()).getTime()).toString();
+            return $http.post("/api/website/" + websiteId + "/page", page);
+            /*page._id = ((new Date()).getTime()).toString();
             page.websiteId = websiteId;
-            pages.push(page);
+            pages.push(page);*/
         }
 
         function findPagesByWebsiteId(websiteId)
         {
-            var webPages = [];
+            return $http.get("/api/website/" + websiteId + "/page", page);
+            /*var webPages = [];
             for(var i in pages)
             {
                 if(pages[i].websiteId == websiteId)
                     webPages.push(pages[i]);
             }
-            return webPages;
+            return webPages;*/
         }
 
         function findPageById(pageId)
         {
-            for(var i in pages)
+            return $http.get("/api/page/" + pageId);
+            /*for(var i in pages)
             {
                 if(pages[i]._id == pageId)
                     return angular.copy(pages[i]);
             }
-            return null;
+            return null;*/
         }
 
         function updatePage(pageId,page)
         {
-            for(var i in pages)
+            return $http.put("/api/page/" + pageId,page);
+            /*for(var i in pages)
             {
                 if(pages[i]._id == pageId)
                 {
@@ -64,17 +68,19 @@
                     pages[i].description = page.description;
                 }
             }
-            return pages;
+            return pages;*/
         }
 
         function deletePage(pageId)
         {
+            return $http.delete("/api/page/" + pageId,page);
+            /*
             for(var i in pages)
             {
                 if(pages[i]._id == pageId)
                     pages.splice(i,1);
             }
-            return pages;
+            return pages;*/
         }
     }
 })();
