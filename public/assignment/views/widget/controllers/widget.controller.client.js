@@ -23,14 +23,33 @@
     }
 })();
 
-(function() {
+(function()
+{
     angular
         .module("WebAppMaker")
         .controller("NewWidgetController",NewWidgetController)
 
-    function NewWidgetController()
+    function NewWidgetController($routeParams, WidgetService, $location)
     {
+        var vm = this;
+        vm.userId = $routeParams["uid"];
+        vm.websiteId = $routeParams["wid"];
+        vm.pageId = $routeParams["pid"];
+        vm.widgetTypes = WidgetService.getWidgetTypes();
 
+        vm.createWidget = createWidget;
+        function init()
+        {
+            console.log("widget types loaded"+vm.widgetTypes);
+        }
+
+        init();
+
+        function createWidget(widgetType)
+        {
+            var newWidget = WidgetService.createTypedWidget(vm.pageId, widgetType);
+            $location.url('/user/'+vm.userId+'/website/'+vm.websiteId+'/page/'+vm.pageId+'/widget/'+ newWidget._id);
+        }
     }
 })();
 
@@ -50,6 +69,7 @@
         vm.deleteWidget = deleteWidget;
 
         function init() {
+            console.log("came to edit controller:");
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
 
