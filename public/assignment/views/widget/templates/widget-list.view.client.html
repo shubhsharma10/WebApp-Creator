@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-fixed-top navbar-light bg-primary" >
-    <div class="container-fluid">
+    <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left" style="margin-left: 0px;">
                 <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
@@ -30,7 +30,7 @@
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
-                <div ng-switch-when="HEADING">
+                <div ng-switch-when="HEADER">
                     <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
                 </div>
                 <div ng-switch-when="IMAGE">
