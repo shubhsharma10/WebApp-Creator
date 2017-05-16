@@ -1,6 +1,6 @@
 # Create websites
 
-1. git clone https://github.com/shubhsharma10/webdev.git
+1. git clone https://github.com/shubhsharma10/WebApp-Creator.git
 1. cd webdev
 1. npm install
 1. mongod
