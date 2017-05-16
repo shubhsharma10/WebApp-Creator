@@ -1,8 +1,5 @@
-/**
- * Created by shubh on 01-05-2017.
- */
 
-(function() {
+(function () {
     angular
-        .module("WebAppMaker",['ngRoute']);
+        .module("WebAppMaker", ['ngRoute']);
 })();

@@ -1,78 +1,119 @@
-/**
- * Created by shubh on 01-05-2017.
- */
-(function() {
+
+(function () {
     angular
         .module("WebAppMaker")
-        .controller("PageListController",PageListController)
+        .controller("PageListController", PageListController)
+        .controller("NewPageController", NewPageController)
+        .controller("EditPageController", EditPageController);
 
-    function PageListController($routeParams,PageService)
-    {
+    function PageListController($routeParams, PageService) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
-        
+        vm.websiteId = $routeParams.wid;
+        vm.userId = $routeParams.uid;
+
         function init() {
-            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            PageService
+                .findPagesByWebsiteId(vm.websiteId)
+                .then(function (pages) {
+                    vm.pages = pages.data;
+                })
+                .catch(function (error) {
+                    vm.error = "No pages found"
+                });
         }
 
         init();
     }
-})();
 
-(function() {
-    angular
-        .module("WebAppMaker")
-        .controller("NewPageController",NewPageController)
-
-    function NewPageController($routeParams,PageService,$location)
-    {
+    function NewPageController($routeParams, PageService, $location) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
-        vm.createPage = createPage;
+        vm.pageId = $routeParams.pid;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.newPage = newPage;
+
         function init() {
+            PageService
+                .findPageById(vm.pageId)
+                .then(function (page) {
+                    vm.page = page.data;
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to find page";
+                });
+            PageService
+                .findPagesByWebsiteId(vm.websiteId)
+                .then(function (pages) {
+                    vm.pages = pages.data;
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to find pages"
+                });
         }
 
         init();
 
-        function createPage() {
-            PageService.createPage(vm.websiteId,vm.page);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
+        function newPage(page) {
+            PageService
+                .createPage(vm.websiteId, page)
+                .then(function (page) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to create page";
+                })
         }
     }
-})();
 
-(function() {
-    angular
-        .module("WebAppMaker")
-        .controller("EditPageController",EditPageController)
-
-    function EditPageController($routeParams,PageService,$location)
-    {
+    function EditPageController($routeParams, PageService, $location) {
         var vm = this;
-        vm.pageID = $routeParams["pid"];
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
+        vm.pageId = $routeParams.pid;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
         function init() {
-            vm.page = PageService.findPageById(vm.pageID);
+            PageService
+                .findPageById(vm.pageId)
+                .then(function (page) {
+                    vm.page = page.data;
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to find page";
+                });
+            PageService
+                .findPagesByWebsiteId(vm.websiteId)
+                .then(function (pages) {
+                    vm.pages = pages.data;
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to find pages"
+                });
         }
 
         init();
 
-        function updatePage()
-        {
-            PageService.updatePage(vm.pageID,vm.page);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        function updatePage(page) {
+            PageService
+                .updatePage(vm.pageId, page)
+                .then(function (page) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to update page";
+                });
         }
 
-        function deletePage()
-        {
-            PageService.deletePage(vm.pageID);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        function deletePage() {
+            PageService
+                .deletePage(vm.pageId)
+                .then(function (result) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to delete page";
+                });
         }
     }
 })();

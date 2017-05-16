@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="WebAppMaker">
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+
     <script src="app.js"></script>
     <script src="config.js"></script>
+
+    <script src="wbdvDirectives/wbdv-sortable.js"></script>
 
     <script src="views/user/controllers/login.controller.client.js"></script>
     <script src="views/user/controllers/profile.controller.client.js"></script>
     <script src="views/user/controllers/register.controller.client.js"></script>
-
-    <script src="views/website/controllers/website-edit.controller.client.js"></script>
     <script src="views/website/controllers/website-list.controller.client.js"></script>
     <script src="views/website/controllers/website-new.controller.client.js"></script>
-
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
     <script src="views/page/controllers/page.controller.client.js"></script>
     <script src="views/widget/controllers/widget.controller.client.js"></script>
 
@@ -25,29 +35,15 @@
     <script src="services/website.service.client.js"></script>
     <script src="services/page.service.client.js"></script>
     <script src="services/widget.service.client.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <title>Web App Maker</title>
 </head>
+
 <body>
-    <div ng-view></div>
-<!--<nav class="navbar navbar-fixed-top navbar-light bg-primary" >
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="navbar-text pull-right">
-                <a class="navbar-brand nav-text nav-textAlign" href="views/user/register.html">
-                    Register
-                </a>
-            </div>
-            <div class="navbar-text pull-right">
-                <a class="navbar-brand nav-text nav-textAlign" href="views/user/login.html">
-                    Login
-                </a>
-            </div>
-            <div class="navbar-text pull-left">
-                <a class="navbar-brand nav-text nav-textAlign" href="#">
-                    WebApp Creator
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>-->
+<div ng-view></div>
 </body>
+
 </html>

@@ -6,7 +6,9 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.15"
+    "mongodb": "^2.2.21",
+    "mongoose": "^4.4.15",
+    "multer": "^1.3.0"
   },
   "devDependencies": {},
   "scripts": {

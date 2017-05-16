@@ -5,10 +5,44 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
 .nav-text{
     color: white;
 }
 
-.nav-textAlign{
-    text-align: center;
+.website-list{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.del-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.widget-handle {
+    position : absolute;
+    right : 15px;
+    background-color : white;
+    padding-left : 5px;
+    padding-bottom : 5px;
+    border-bottom-left-radius : 5px;
+    opacity : 0.7;
+    z-index : 2;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
 }

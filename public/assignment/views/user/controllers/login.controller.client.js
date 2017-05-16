@@ -1,26 +1,22 @@
-/**
- * Created by shubh on 01-05-2017.
- */
-(function() {
+
+(function () {
     angular
         .module("WebAppMaker")
-        .controller("LoginController",LoginController);
+        .controller("LoginController", LoginController);
 
-    function LoginController($location,UserService)
-    {
+    function LoginController($location, UserService) {
         var vm = this;
-        vm.login = loginUser;
+        vm.login = login;
 
-        function loginUser(user)
-        {
+        function login(user) {
             UserService
-                .findUserByCredentials(user.username,user.password)
+                .findUserByCredentials(user.username, user.password)
                 .then(function (user) {
                     $location.url("/user/" + user.data._id);
                 })
                 .catch(function (error) {
                     vm.error = "Unable to login";
-                });
+                })
         }
     }
 })();

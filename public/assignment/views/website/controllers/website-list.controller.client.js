@@ -1,18 +1,22 @@
-/**
- * Created by shubh on 01-05-2017.
- */
-(function() {
+
+(function () {
     angular
         .module("WebAppMaker")
-        .controller("WebsiteListController",WebsiteListController)
+        .controller("WebsiteListController", WebsiteListController);
 
-    function WebsiteListController($routeParams,WebsiteService)
-    {
+    function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
+        vm.userId = $routeParams.uid;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            WebsiteService
+                .findWebsitesByUser(vm.userId)
+                .then(function (websites) {
+                    vm.websites = websites.data;
+                })
+                .catch(function (error) {
+                    vm.error = "Websites not found";
+                });
         }
 
         init();

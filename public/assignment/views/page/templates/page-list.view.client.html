@@ -1,49 +1,44 @@
-<nav class="navbar navbar-light bg-primary navbar-fixed-top" >
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}/website">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand nav-text" href="#">
-                    Pages
-                </a>
-            </div>
+<nav class="navbar navbar-fixed-top navbar-light bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="nav-text" href="#/user/{{model.userId}}/website">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                Pages
+            </a>
         </div>
     </div>
 </nav>
 
-<div class="row container-fluid">
-    <div class="col-sm-12"
-         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
-        <ul class="list-group">
-            <li ng-repeat="page in model.pages" class="list-group-item">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
-                    {{page.name}}
-                </a>
+<div class="container-fluid">
+    <ul class="list-group website-list">
+        <li ng-repeat="page in model.pages" class="list-group-item">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                {{page.name}}
+            </a>
+            <div class="pull-right">
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-            </li>
-        </ul>
-    </div>
+            </div>
+        </li>
+    </ul>
 </div>
 
-<nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+<nav class="navbar navbar-light navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a class="nav-text" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
 </nav>

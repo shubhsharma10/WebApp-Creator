@@ -1,34 +1,34 @@
-
-<nav class="navbar navbar-fixed-top navbar-light bg-primary" >
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="navbar-text pull-left" style="margin-left: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand nav-text" href="#">
-                    Widgets
-                </a>
-            </div>
+<nav class="navbar navbar-fixed-top navbar-light bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="nav-text"
+               href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand nav-text"
+               href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                Widgets
+            </a>
         </div>
     </div>
 </nav>
 
-<div class="row container-fluid">
-        <div ng-repeat="widget in model.widgets">
-            <div ng-switch="widget.widgetType">
-                <div class="widget-dragger pull-right">
+<div wbdv-sortable="" class="container-fluid website-list">
+    <div class="card" ng-repeat="widget in model.widgets">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" ng-switch="widget.widgetType">
+                <div class="widget-handle">
                     <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
-                    <span class="glyphicon glyphicon-align-justify"></span>
+                    <span class="widget-dragger glyphicon glyphicon-align-justify"></span>
                 </div>
                 <div ng-switch-when="HEADER">
                     <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
@@ -39,28 +39,30 @@
                 <div ng-switch-when="YOUTUBE">
                     <ng-include src="'views/widget/templates/widget-youtube.view.client.html'">
                 </div>
-            </div>
-        </div>
+                <div ng-switch-when="HTML">
+                    <div ng-bind-html="model.getTrustedHtml(widget.text)"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 
-<nav class="navbar navbar-light bg-primary navbar-fixed-bottom" >
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="navbar-text pull-left">
-                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                    <span class="glyphicon glyphicon-play"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-left">
-                <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                    <span class="glyphicon glyphicon-eye-open"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-right" style="margin-right: 0px;">
-                <a class="nav-text" href="#/user/{{model.userId}}">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+<nav class="navbar navbar-light navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-left">
+            <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="nav-text" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
 </nav>

@@ -1,88 +1,102 @@
-/**
- * Created by shubh on 01-05-2017.
- */
-(function() {
+
+(function () {
     angular
         .module("WebAppMaker")
-        .controller("WidgetListController",WidgetListController)
+        .controller("WidgetListController", WidgetListController)
+        .controller("NewWidgetController", NewWidgetController)
+        .controller("EditWidgetController", EditWidgetController);
 
-    function WidgetListController($routeParams,WidgetService)
-    {
+    function WidgetListController($routeParams, WidgetService, $sce) {
         var vm = this;
-        vm.pageId = $routeParams["pid"];
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
+        vm.getTrustedYouTubeUrl = getTrustedYouTubeUrl;
+        vm.getTrustedHtml = getTrustedHtml;
 
         function init() {
-            console.log("will find widgets now");
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
-            console.log("number of widgets: "+vm.widgets.length);
+            WidgetService
+                .findWidgetsByPageId(vm.pageId)
+                .then(function (widgets) {
+                    vm.widgets = widgets.data;
+                });
         }
 
         init();
+
+        function getTrustedYouTubeUrl(url) {
+            var baseUrl = "https://www.youtube.com/embed/";
+            var urlParts = url.split('/');
+            var id = urlParts[urlParts.length - 1];
+            baseUrl += id;
+            return $sce.trustAsResourceUrl(baseUrl);
+        }
+
+        function getTrustedHtml(html) {
+            return $sce.trustAsHtml(html);
+        }
     }
-})();
 
-(function()
-{
-    angular
-        .module("WebAppMaker")
-        .controller("NewWidgetController",NewWidgetController)
-
-    function NewWidgetController($routeParams, WidgetService, $location)
-    {
+    function NewWidgetController($routeParams, WidgetService, $location) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
-        vm.pageId = $routeParams["pid"];
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
         vm.widgetTypes = WidgetService.getWidgetTypes();
-
         vm.createWidget = createWidget;
-        function init()
-        {
-            console.log("widget types loaded"+vm.widgetTypes);
-        }
 
-        init();
-
-        function createWidget(widgetType)
-        {
-            var newWidget = WidgetService.createTypedWidget(vm.pageId, widgetType);
-            $location.url('/user/'+vm.userId+'/website/'+vm.websiteId+'/page/'+vm.pageId+'/widget/'+ newWidget._id);
+        function createWidget(widgetType) {
+            WidgetService
+                .createTypedWidget(vm.pageId, widgetType)
+                .then(function (widget) {
+                    var newWidget = widget.data;
+                    $location.url('/user/' + vm.userId + '/website/' + vm.websiteId + '/page/' + vm.pageId + '/widget/' + newWidget._id);
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to create widget";
+                })
         }
     }
-})();
 
-(function() {
-    angular
-        .module("WebAppMaker")
-        .controller("EditWidgetController",EditWidgetController)
-
-    function EditWidgetController($routeParams,$location,WidgetService)
-    {
+    function EditWidgetController($routeParams, WidgetService, $location) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
-        vm.pageId = $routeParams["pid"];
-        vm.widgetId = $routeParams["wgid"];
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
+        vm.widgetId = $routeParams.wgid;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
 
         function init() {
-            console.log("came to edit controller:");
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .then(function (widget) {
+                    vm.widget = widget.data;
+                });
         }
 
         init();
 
         function updateWidget(widget) {
-            WidgetService.updateWidget(vm.widgetId, widget);
-            $location.url('/user/' + vm.userId + '/website/' + vm.websiteId + '/page/' + vm.pageId + '/widget');
+            WidgetService
+                .updateWidget(vm.widgetId, widget)
+                .then(function (result) {
+                    $location.url('/user/' + vm.userId + '/website/' + vm.websiteId + '/page/' + vm.pageId + '/widget');
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to update widget";
+                });
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(vm.widgetId);
-            $location.url('/user/' + vm.userId + '/website/' + vm.websiteId + '/page/' + vm.pageId + '/widget');
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .then(function (result) {
+                    $location.url('/user/' + vm.userId + '/website/' + vm.websiteId + '/page/' + vm.pageId + '/widget');
+                })
+                .catch(function (error) {
+                    vm.error = "Unable to delete widget";
+                });
         }
     }
 })();

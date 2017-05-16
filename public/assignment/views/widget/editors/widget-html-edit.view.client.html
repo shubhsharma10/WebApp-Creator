@@ -21,7 +21,6 @@
 
 <div class="container-fluid">
     <div class="website-list">
-
         <label for="widget-name">Name</label>
         <input ng-model="model.widget.name"
                id="widget-name"
@@ -29,19 +28,12 @@
                type="text"
                placeholder="Name"/>
 
-        <label for="widget-text">Text</label>
+        <label for="widget-text">HTML</label>
         <input ng-model="model.widget.text"
                id="widget-text"
                class="form-control"
                type="text"
                placeholder="Text"/>
-
-        <label>Size
-            <select ng-model="model.widget.size"
-                    ng-options="x for x in [1,2,3,4,5,6]"
-                    name="widget-size">
-            </select>
-        </label>
 
         <a class="btn btn-danger btn-block"
            ng-click="model.deleteWidget()">

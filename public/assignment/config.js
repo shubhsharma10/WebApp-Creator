@@ -1,14 +1,13 @@
-/**
- * Created by shubh on 01-05-2017.
- */
 
-(function() {
+(function(){
     angular
         .module("WebAppMaker")
         .config(Config);
+
     function Config($routeProvider, $httpProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+
         $routeProvider
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -66,7 +65,7 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: "views/widget/templates/widget-chooser.view.client.html",
+                templateUrl: "views/widget/templates/widget-choose.view.client.html",
                 controller: "NewWidgetController",
                 controllerAs: "model"
             })
@@ -75,5 +74,6 @@
                 controller: "EditWidgetController",
                 controllerAs: "model"
             })
+            .otherwise({redirectTo:'/login'})
     }
 })();

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-fixed-top navbar-light bg-primary">
-    <div class="row container-fluid">
+    <div class="container-fluid">
         <div class="navbar-text pull-left">
             <a class="nav-text" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -35,10 +35,13 @@
                type="text"
                placeholder="Text"/>
 
-        <label for="widget-url">URL</label>
-        <input ng-model="model.widget.url" id="widget-url" class="form-control" type="url" placeholder="URL"/>
-        <label for="widget-width">Width</label>
-        <input ng-model="model.widget.width" id="widget-width" class="form-control" type="text" placeholder="Width"/>
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <input name="myFile" type="file" class="form-control"/>
+            <input name="uid" value="{{model.userId}}" style="display: none"/>
+            <input name="wid" value="{{model.websiteId}}" style="display: none"/>
+            <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+            <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        </form>
 
         <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">
             Delete

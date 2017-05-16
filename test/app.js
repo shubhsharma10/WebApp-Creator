@@ -4,7 +4,7 @@ module.exports = function(app)
     app.post("/api/test", createMessage);
     app.delete("/api/test/:id", deleteMessage);
 
-    var connectionString = 'mongodb://admin:1234@ds119091.mlab.com:19091/heroku_wpn0lrd7';
+    var connectionString = 'mongodb://127.0.0.1:27017/test';
 
     if(process.env.MLAB_USERNAME) {
         connectionString = process.env.MLAB_USERNAME + ":" +
